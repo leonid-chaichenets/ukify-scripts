@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+version="$1"
+
+[ -n "$version" ] || {
+    echo "zz-ukify: Missing kernel version argument." >&2
+    exit 1
+}
+
+echo "Removing UKI /boot/efi/EFI/ubuntu/$version.efi." >&2
+
+rm -f /boot/efi/EFI/ubuntu/$version.efi || echo "Warning: failed to remove UKI for kernel version $version." >&2
